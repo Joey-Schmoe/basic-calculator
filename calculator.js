@@ -24,6 +24,11 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if (a == 0 || b == 0) {
+        alert('"Perched at the very precipice of oblivion..." \n\n ERROR: Divided by 0');
+        clearAll();
+        return 0;
+    }
     return a / b;
 }
 
@@ -55,8 +60,6 @@ function operate() {
         switch(operator) {
             case operators.ADD:
                 result = add(num1, num2);
-                console.log(`ADD (${num1}, ${num2}) for result: ${result}`);
-                console.log(`TYPEOF num1: ${typeof num1}; TYPEOF num2: ${typeof num2}; TYPEOF result: ${result}`);
             break;
     
             case operators.SUBTRACT:
@@ -100,7 +103,6 @@ function setNumber(num) {
 
 function setOperator(op) {
     operator = op;
-    console.log(`Operator set to value of op: ${op}`);
 
     num1 = Number(display);
 
