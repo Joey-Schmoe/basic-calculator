@@ -9,6 +9,7 @@ var operator = "";
 var num1 = null;
 var num2 = null;
 var display = "";
+var readyForNum2 = false;
 
 function add(a, b) {
     return a + b;
@@ -40,6 +41,7 @@ function clearAll() {
     operator = "";
     num1 = null;
     num2 = null;
+    readyForNum2 = false;
 
     display = "0";
     updateDisplay();
@@ -47,57 +49,62 @@ function clearAll() {
 
 function operate() {
     let result = 0;
+    if (num1 != null && operator != '') {
+        num2 = Number(display);
 
-    switch(operator) {
-        case operators.ADD:
-            num1 = Number(num1);
-            num2 = Number(num2);
+        switch(operator) {
+            case operators.ADD:
+                result = add(num1, num2);
+                console.log(`ADD (${num1}, ${num2}) for result: ${result}`);
+                console.log(`TYPEOF num1: ${typeof num1}; TYPEOF num2: ${typeof num2}; TYPEOF result: ${result}`);
+            break;
+    
+            case operators.SUBTRACT:
+                result = subtract(num1, num2);
+            break;
+    
+            case operators.MULTIPLY:
+                result = multiply(num1, num2);
+            break;
+    
+            case operators.DIVIDE:
+                result = divide(num1, num2);
+            break;
+        }
 
-            result = num1 + num2;
-            display = result;
+        num2 = null;
+        operator = '';
 
-            console.log(`Running ADD operation. Num1: ${num1}, Num2: ${num2}, Operator: ${operator}. RESULT: ${result}`);
-            
-            num1 = result;
-
-            updateDisplay();
-
-            
-
-            num2 = null;
-            operator = '';
-        break;
-
-        case operators.SUBTRACT:
-
-        break;
-
-        case operators.MULTIPLY:
-
-        break;
-
-        case operators.DIVIDE:
-
-        break;
-
+        display = result;
+    
+        num1 = result;
+    
+        updateDisplay();
     }
 }
 
 function setNumber(num) {
-    if (operator == '') {
-        num1 = num;
-
+    if (!readyForNum2) {
+        if (display == "0") {
+            display = num;
+        } else {
+            display += num;
+        }
     } else {
-        num2 = num;
+        display = num;
+        readyForNum2 = false;
     }
 
-    display += num;
     updateDisplay();
 }
 
 function setOperator(op) {
     operator = op;
     console.log(`Operator set to value of op: ${op}`);
+
+    num1 = Number(display);
+
+    readyForNum2 = true;
 }
 
 function updateDisplay() {

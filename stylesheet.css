@@ -97,3 +97,13 @@ main {
     grid-column: -2 / -1;
     grid-row: -2 / -1;
 }
+
+#button-clear {
+    background-color: rgb(201, 141, 134);
+}
+
+#button-clear:hover {
+    background: transparent;
+    color: var(--color-dark);
+    border: 2px solid rgb(201, 141, 134);
+}
