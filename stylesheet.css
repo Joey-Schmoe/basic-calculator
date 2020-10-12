@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400;700&display=swap');
 
+:root {
+    --color-dark: rgb(36, 32, 56);
+    --color-highlight: rgb(114, 90, 193);
+    --color-base: rgb(141, 134, 201);
+    --color-lowlight: rgb(202, 196, 206);
+    --color-light: rgb(247, 236, 225);
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -16,7 +24,7 @@ main {
     margin: 48px auto;
     padding: 8px;
 
-    background-color: white;
+    background-color: var(--color-light);
     border: 4px solid gray;
     border-radius: 10px;
     
@@ -27,7 +35,7 @@ main {
     border: 1px solid gray;
     border-radius: 3px;
     box-shadow: 0 0 2px 0 black inset;
-    background-color: #DFE2E5;
+    background-color: var(--color-lowlight);
 
     padding: 0 16px;
     margin-bottom: 24px;
@@ -60,20 +68,29 @@ main {
 
 .button-number {
     font-size: 32px;
+    background-color: var(--color-lowlight);
+    color: var(--color-dark);
+}
+
+.button-number:hover {
+    background-color: var(--color-highlight);
+    color: var(--color-light);
+    border: 2px solid var(--color-dark);
 }
 
 .button-operation {
-    background-color: slategrey;
+    background-color: var(--color-base);
     
-    border: 2px solid slategrey;
-    color: white;
+
+    color: var(--color-light);
     font-size: 42px;
 
 }
 
 .button-operation:hover {
     background: transparent;
-    color: slategrey;
+    color: var(--color-dark);
+    border: 2px solid var(--color-base);
 }
 
 #button-equals {

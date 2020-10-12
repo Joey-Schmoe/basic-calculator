@@ -43,14 +43,29 @@ function clearAll() {
 
     display = "0";
     updateDisplay();
-
-    console.log(`clear() was called; updating display with value: ${display}`);
 }
 
 function operate() {
+    let result = 0;
+
     switch(operator) {
         case operators.ADD:
+            num1 = Number(num1);
+            num2 = Number(num2);
 
+            result = num1 + num2;
+            display = result;
+
+            console.log(`Running ADD operation. Num1: ${num1}, Num2: ${num2}, Operator: ${operator}. RESULT: ${result}`);
+            
+            num1 = result;
+
+            updateDisplay();
+
+            
+
+            num2 = null;
+            operator = '';
         break;
 
         case operators.SUBTRACT:
@@ -69,8 +84,9 @@ function operate() {
 }
 
 function setNumber(num) {
-    if (num1 == null) {
+    if (operator == '') {
         num1 = num;
+
     } else {
         num2 = num;
     }
@@ -81,8 +97,13 @@ function setNumber(num) {
 
 function setOperator(op) {
     operator = op;
+    console.log(`Operator set to value of op: ${op}`);
 }
 
 function updateDisplay() {
+    display = display.toString();
+    if (display.length > 1 && display.substring(0,1) == '0') {
+        display = display.replace('0', '');
+    }
     document.getElementById('display').textContent = display;
 }
