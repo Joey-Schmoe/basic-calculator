@@ -10,37 +10,41 @@ var num1 = null;
 var num2 = null;
 var display = "";
 
-function add (a, b) {
+function add(a, b) {
     return a + b;
 }
 
-function subtract (a, b) {
+function subtract(a, b) {
     return a - b;
 }
 
-function multiply (a, b) {
+function multiply(a, b) {
     return a * b;
 }
 
-function divide (a, b) {
+function divide(a, b) {
     return a / b;
 }
 
-function invert () {
-
+function invert() {
+    display *= -1;
+    updateDisplay();
 }
 
-function percentage () {
-
+function percentage() {
+    display /= 100;
+    updateDisplay();
 }
 
-function clear () {
+function clearAll() {
     operator = "";
     num1 = null;
     num2 = null;
 
-    display = 0;
+    display = "0";
     updateDisplay();
+
+    console.log(`clear() was called; updating display with value: ${display}`);
 }
 
 function operate() {
